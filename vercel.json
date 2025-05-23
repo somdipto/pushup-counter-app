@@ -1,0 +1,19 @@
+{
+  "version": 2,
+  "builds": [
+    { "src": "package.json", "use": "@vercel/next" },
+    { "src": "api/pushups.py", "use": "@vercel/python" }
+  ],
+  "routes": [
+    { "src": "/api/(.*)", "dest": "/api/pushups.py" },
+    { "src": "/(.*)", "dest": "/" }
+  ],
+  "env": {
+    "PYTHONPATH": "."
+  },
+  "build": {
+    "env": {
+      "NODE_ENV": "production"
+    }
+  }
+}
